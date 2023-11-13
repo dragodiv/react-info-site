@@ -3,13 +3,22 @@
   margin: 0;
   box-sizing: border-box;
   align-items: top;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
 ::-webkit-scrollbar{
   display: none;
 }
+
+.main.dark{
+  color: white;
+  background-color: #242424;
+}
+
 .main{
   height: 100vh;
   width: 100vw;
+  z-index: -1;
   overflow-x: hidden;
 }
 /* Navbar CSS */
@@ -46,6 +55,7 @@
   display: flex;
   list-style: none;
   gap: 30px;
+  align-items: center;
   padding-right: 40px;
   font-size: 20px;
 }
@@ -60,11 +70,41 @@ li:hover{
   color: #00d8ff;
 }
 
+.lg{
+  animation: 5s round infinite linear;
+}
+
+.toggle-theme{
+  background: #242424;
+  width: 40px;
+  height: 40px;
+  color: white;
+  padding: 2px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 25px;
+  transition: all ease 0.3s;
+}
+
+.dark .toggle-theme{
+  background: white;
+  color: #242424;
+}
+i{
+  transition: all linear 0.2s;
+}
+.fa-sun{
+  font-size: 20px;
+}
+.fa-moon{
+  font-size: 23px;
+}
+
 /* Facts Section */
 
 .facts{
   width: 100vw;
-  height: 70vh;
   position: relative;
 }
 .facts .f-txt{
@@ -79,20 +119,43 @@ li:hover{
   margin-bottom: 5px;
 }
 
-.facts img{
+.abs-logo{
   position: absolute;
   width: 40rem;
   filter: grayscale(1);
-  top: 0;
+  top: 20%;
   transition: all ease 0.4s;
   right: -10rem;
   opacity: 0.8;
+  cursor: pointer;
 }
 
-.facts img:hover{
+.abs-logo:hover{
   filter: grayscale(0);
+  animation: 10s round infinite linear;
+}
+@keyframes round {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
 
+@media (width<1370px){
+  .f-list,.f-txt{
+    z-index: 9999;
+  }
+  .abs-logo{  
+    right: -30;
+    opacity: 0.3;
+    z-index: 0;
+  }
+  .facts{
+    z-index: 1;
+  }
+}
 
 @media (width<930px) {
   .nav{
@@ -115,9 +178,8 @@ li:hover{
   .facts .f-list{
     font-size: 1.2rem;
   }
-  .facts img{  
+  .abs-logo{  
     right: 0;
-    opacity: 0.2;
-    z-index: -1;
+    opacity: 0.3;
   }
 }
