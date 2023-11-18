@@ -115,6 +115,9 @@ i{
   margin-left: 4rem;
   font-size: 2rem;
 }
+.f-list li::marker{
+  color: #00d8ff;
+}
 .f-list li{
   margin-bottom: 5px;
 }
